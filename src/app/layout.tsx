@@ -16,8 +16,7 @@ export default function RootLayout({
     <html lang="ko">
       <body
         className={`${notoSansKr.className} h-dvh w-dvw bg-white font-[300]
-text-black dark:bg-black dark:text-white md:flex md:flex-col
-md:items-center`}
+text-black dark:bg-black dark:text-white md:flex md:flex-col`}
       >
         <NextThemesProvider>{children}</NextThemesProvider>
       </body>

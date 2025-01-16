@@ -25,7 +25,7 @@ const Header = () => {
 const PostsList = () => {
   return (
     <section
-      className="scrollbar-hide w-full pb-12 md:h-[85vh] md:max-h-screen
+      className="w-full pb-12 scrollbar-hide md:h-[85vh] md:max-h-screen
 md:w-1/2 md:overflow-y-scroll"
     >
       <ul className="space-y-8">
@@ -58,7 +58,7 @@ export default function MainPage() {
   return (
     <div
       className="max-h-screen space-y-8 px-4 pt-4 md:flex md:max-w-[1024px]
-md:items-center md:justify-between"
+md:items-center md:justify-between md:self-center"
     >
       <Header />
       <PostsList />
