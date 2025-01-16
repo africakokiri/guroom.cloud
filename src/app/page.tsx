@@ -1,5 +1,6 @@
-import { CloudImage } from "@/components/cloud-image";
 import { Darkmode } from "@/components/darkmode-switch";
+import { CloudImage } from "@/components/images/cloud-image";
+import { StackImage } from "@/components/images/stack-image";
 
 import { posts } from "../../.velite";
 
@@ -24,8 +25,8 @@ const Header = () => {
 const PostsList = () => {
   return (
     <section
-      className="scrollbar-hide w-full md:h-[85vh] md:max-h-screen md:w-1/2
-md:overflow-y-scroll"
+      className="scrollbar-hide w-full pb-12 md:h-[85vh] md:max-h-screen
+md:w-1/2 md:overflow-y-scroll"
     >
       <ul className="space-y-8">
         {sortedByDatePosts.map(({ title, slug, date }) => {
@@ -37,12 +38,12 @@ bg-neutral-100 dark:border-white/20 dark:bg-[#303030]"
             >
               <Link
                 href={slug.toLowerCase()}
-                className="block h-full w-full space-y-4 p-4 md:p-6"
+                className="block h-full w-full space-y-4 p-4 md:pb-2"
               >
                 <p className="text-lg font-[400]">{title}</p>
-                <p className="flex justify-between text-xs">
-                  <span>{slug.split("/")[1]}</span>
+                <p className="flex items-center justify-between text-xs">
                   <span>{date}</span>
+                  <StackImage slug={slug} />
                 </p>
               </Link>
             </li>
@@ -56,11 +57,10 @@ bg-neutral-100 dark:border-white/20 dark:bg-[#303030]"
 export default function MainPage() {
   return (
     <div
-      className="max-h-screen space-y-8 px-4 pb-12 pt-4 md:flex
-md:max-w-[1024px] md:items-center md:justify-between"
+      className="max-h-screen space-y-8 px-4 pt-4 md:flex md:max-w-[1024px]
+md:items-center md:justify-between"
     >
       <Header />
-
       <PostsList />
     </div>
   );
