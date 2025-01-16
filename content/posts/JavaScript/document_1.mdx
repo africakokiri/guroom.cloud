@@ -3,4 +3,85 @@ title: Glimmering Horizons
 date: 2025-01-01
 ---
 
-The sky was painted with hues of orange and pink as the sun dipped below the horizon.
+Velit nostrud veniam elit officia non excepteur nisi magna velit. Eu tempor
+culpa proident culpa laboris. Minim cupidatat pariatur aliqua magna
+excepteur duis. Aliqua pariatur ex non consectetur ut incididunt
+exercitation. Dolore amet aliquip laborum anim sit aute ut officia
+adipisicing sit laborum culpa eu. Dolor dolore duis excepteur est voluptate
+labore labore consequat culpa. Consequat magna veniam id enim.
+
+Ipsum ex aliqua mollit occaecat fugiat incididunt est eu adipisicing do
+nulla est sit quis. Reprehenderit adipisicing velit sit aute Lorem eiusmod
+sint velit. In in adipisicing sint non incididunt cupidatat quis est
+reprehenderit qui cupidatat incididunt pariatur. Et adipisicing ex Lorem
+nulla commodo pariatur commodo aute ullamco consectetur tempor amet Lorem
+magna.
+
+Officia excepteur eu officia irure minim excepteur officia sit enim. Nulla
+aliquip sit nulla nulla Lorem dolor exercitation elit. Minim sit labore
+culpa magna cillum ex voluptate tempor ut consequat labore excepteur dolor
+nulla. Eu in tempor laborum et consequat laboris nulla in. Aliquip veniam
+nisi duis eu reprehenderit mollit esse id.
+
+```tsx
+import { CloudImage } from "@/components/cloud-image";
+import { Darkmode } from "@/components/darkmode-switch";
+
+import { posts } from "../../.velite";
+
+import Link from "next/link";
+
+const sortedByDatePosts = posts.sort((a, b) => {
+  if (a.date > b.date) return -1;
+  if (a.date < b.date) return 1;
+
+  return 0;
+});
+
+const Header = () => {
+  return (
+    <header className="relative flex flex-col items-center gap-8 md:w-1/3">
+      <CloudImage />
+      <Darkmode />
+    </header>
+  );
+};
+
+const PostsList = () => {
+  return (
+    <section className="scrollbar-hide w-full md:h-[85vh] md:max-h-screen md:w-1/2 md:overflow-y-scroll">
+      <ul className="space-y-8">
+        {sortedByDatePosts.map(({ title, slug, date }) => {
+          return (
+            <li
+              key={slug}
+              className="rounded-lg border-[1px] border-neutral-500/20 bg-neutral-100 dark:border-white/20 dark:bg-[#303030]"
+            >
+              <Link
+                href={slug.toLowerCase()}
+                className="block h-full w-full space-y-4 p-4 md:p-6"
+              >
+                <p className="text-lg font-[400]">{title}</p>
+                <p className="flex justify-between text-xs">
+                  <span>{slug.split("/")[1]}</span>
+                  <span>{date}</span>
+                </p>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+};
+
+export default function MainPage() {
+  return (
+    <div className="max-h-screen space-y-8 px-4 pb-12 pt-4 md:flex md:max-w-[1024px] md:items-center md:justify-between">
+      <Header />
+
+      <PostsList />
+    </div>
+  );
+}
+```
