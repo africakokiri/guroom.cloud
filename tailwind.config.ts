@@ -1,3 +1,4 @@
+import scrollbarHide from "tailwind-scrollbar-hide";
 import type { Config } from "tailwindcss";
 import twAnimate from "tailwindcss-animate";
 
@@ -12,5 +13,5 @@ export default {
       }
     }
   },
-  plugins: [twAnimate]
+  plugins: [twAnimate, scrollbarHide]
 } satisfies Config;
