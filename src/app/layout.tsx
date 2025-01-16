@@ -14,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${notoSansKr.className} h-dvh w-dvw`}>
+      <body
+        className={`${notoSansKr.className} h-dvh w-dvw bg-white text-black
+dark:bg-black dark:text-white`}
+      >
         <NextThemesProvider>{children}</NextThemesProvider>
       </body>
     </html>

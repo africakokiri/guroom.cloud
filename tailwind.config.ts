@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        black: "hsl(0, 0%, 14.9%)",
-        white: "hsl(0, 0%, 89.8%)"
+        black: "hsl(0, 0%, 14.9%)"
+        // white: "hsl(0, 0%, 89.8%)"
       }
     }
   },
