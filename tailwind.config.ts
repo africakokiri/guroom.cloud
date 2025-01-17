@@ -1,3 +1,4 @@
+import twTypography from "@tailwindcss/typography";
 import scrollbarHide from "tailwind-scrollbar-hide";
 import type { Config } from "tailwindcss";
 import twAnimate from "tailwindcss-animate";
@@ -13,5 +14,5 @@ export default {
       }
     }
   },
-  plugins: [twAnimate, scrollbarHide]
+  plugins: [twAnimate, scrollbarHide, twTypography]
 } satisfies Config;

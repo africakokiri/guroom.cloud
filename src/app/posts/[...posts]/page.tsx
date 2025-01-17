@@ -4,7 +4,10 @@ import { MDXContent } from "@/components/mdx-content";
 
 import { posts } from "../../../../.velite";
 
+import { Inter } from "next/font/google";
 import Link from "next/link";
+
+const inter = Inter({ subsets: ["latin"] });
 
 const getPostByParams = async (resolvedParams: string[]) => {
   const params = `posts/${resolvedParams[0]}/${resolvedParams[1]}`;
@@ -28,30 +31,36 @@ export default async function PostDetailPage({
   }
 
   return (
-    <div className="flex flex-col items-center">
-      <nav
-        className="fixed flex w-full max-w-[650px] items-center
-justify-between border-b-[1px] border-black bg-white p-4 dark:border-white
-dark:bg-black"
-      >
-        <Link href="/">
-          <h1 className="text-xl">구름</h1>
-        </Link>
-        <Darkmode />
-      </nav>
-      <article className="max-w-[650px] overflow-x-hidden px-4 py-20">
-        <div className="space-y-4">
-          <h1 className="text-2xl font-bold">{post.title}</h1>
+    <div className="space-y-12 self-center px-4">
+      <div className="">
+        <nav
+          className="fixed flex w-[calc(100vw-32px)] items-center
+justify-between border-b-[1px] border-black/20 bg-white py-4
+dark:border-white/20 dark:bg-black"
+        >
+          <Link href="/">
+            <span className="text-xl">구름</span>
+          </Link>
+          <Darkmode />
+        </nav>
+        <header className="space-y-4 pt-24">
+          <h1 className={`${inter.className} text-3xl font-extrabold`}>
+            {post.title}
+          </h1>
           <p className="flex items-center justify-between text-sm">
             <span>{post.date}</span>
             <StackImage slug={post.slug} />
           </p>
+        </header>
+      </div>
+
+      <article
+        className="prose self-center overflow-x-hidden py-20 pt-0
+text-black dark:text-white"
+      >
+        <div className="">
+          <MDXContent code={post.code} />
         </div>
-        <hr
-          className="my-4 border-[0.5px] border-black/20
-dark:border-white/20"
-        />
-        <MDXContent code={post.code} />
       </article>
     </div>
   );
